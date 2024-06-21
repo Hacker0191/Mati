@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole</title>
+    <link rel="stylesheet" href="../assets/css/mole.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-bar">
+            <div id="score">Score: <span id="scoreValue">0</span></div>
+            <div id="chances">Chances: <span id="chancesValue">❤️❤️❤️</span></div>
+        </div>
+        <h1>Whack-a-Mole</h1>
+        <div class="game-container">
+            <div class="hole" id="hole1"><div class="mole"></div></div>
+            <div class="hole" id="hole2"><div class="mole"></div></div>
+            <div class="hole" id="hole3"><div class="mole"></div></div>
+            <div class="hole" id="hole4"><div class="mole"></div></div>
+        </div>
+        <div class="win-gif" id="winGif">
+            <img src="../assets/images/gif.gif" alt="You Win!" style="opacity: 0.5;">
+        </div>
+    </div>
+    <audio id="whackSound" src="../assets/audios/whack.mp3"></audio>
+    <audio id="lostSound" src="../assets/audios/lost.mp3"></audio>
+
+    <script src="../assets/js/mole.js"></script>
+</body>
+</html>

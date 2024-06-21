@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap">
+    <link rel="stylesheet" href="../assets/css/moon.css">
+
+    <style>
+        /* Button styles */
+        .glow {
+            font-size: 24px;
+            padding: 15px 30px;
+            color: #fff;
+            background-color: #ff69b4; /* Hot pink */
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(255, 105, 180, 0.4); /* Pink glow effect */
+            transition: box-shadow 0.3s;
+            outline: none;
+            text-decoration: none; /* Remove underline */
+            display: inline-block;
+            font-family: 'Dancing Script', cursive; /* Apply Dancing Script font */
+        }
+        .glow:hover {
+            box-shadow: 0 12px 20px rgba(255, 105, 180, 0.6); /* Larger glow effect on hover */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8); /* Black background with opacity */
+        }
+        .modal-content {
+            background-color: #000;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            color: #fff;
+            font-family: 'Dancing Script', cursive; /* Apply Dancing Script font */
+        }
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+        }
+        h2 {
+            text-align: center;
+            color: #fff;
+            font-family: 'Dancing Script', cursive; /* Apply Dancing Script font */
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+            font-family: 'Dancing Script', cursive; /* Apply Dancing Script font */
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000;
+            resize: none;
+            font-family: 'Dancing Script', cursive; /* Apply Dancing Script font */
+        }
+        input[type="submit"] {
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            outline: none;
+            display: block;
+            margin-top: 20px;
+            font-family: 'Dancing Script', cursive; /* Apply Dancing Script font */
+        }
+        input[type="submit"]:hover {
+            background-color: #ff4f9a;
+        }
+    </style>
+
+</head>
+<body>
+    
+<!-- partial:index.partial.html -->
+<section class="p14">
+    <a href="">MOON</a>
+</section>
+
+<div id='stars'>
+</div>
+
+<div id='stars2'>
+</div>
+
+<div id='stars3'>
+</div>
+
+<center><div id='title'>
+    <span></span>
+    <div class="moon">
+        <span></span>
+        <div class="moon-glow">
+            <span></span>
+        </div>
+
+        <div class="crater">
+            <span></span>
+        </div>
+
+        <div class="shade">
+            <span></span>
+        </div>
+</div></center>
+    <br>
+   <!-- Button -->
+<center>
+    <a href="#" class="glow" onclick="openModal()">Make a Wish</a>
+</center>
+</div>
+<!-- partial -->
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Make a Wish</h2>
+      <!-- Wish Form -->
+      <form action="https://formspree.io/f/mjvqobge" method="POST">
+          <label for="wish">Your Wish:</label>
+          <textarea id="wish" name="wish" placeholder="Write your wish here..."></textarea><br><br>
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+  
+  <script>
+      // Get the modal
+      var modal = document.getElementById('myModal');
+  
+      // Get the button that opens the modal
+      var btn = document.querySelector('.glow');
+  
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+  
+      // When the user clicks the button, open the modal
+      function openModal() {
+          modal.style.display = "block";
+      }
+  
+      // When the user clicks on <span> (x), close the modal
+      function closeModal() {
+          modal.style.display = "none";
+      }
+  
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+  </script>
+
+</body>
+</html>

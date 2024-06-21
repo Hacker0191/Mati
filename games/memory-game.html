@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Game 🎀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Anton'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="../../assets/css/memory-game.css">
+  <style>
+    /* Timer CSS */
+    #timer {
+      font-family: 'Anton', sans-serif;
+      font-size: 2em;
+      text-align: center;
+      padding: 10px;
+      background: #ffebcd;
+      border: 2px solid #333;
+      border-radius: 5px;
+      margin: 20px auto;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer">00:00</div>
+  
+  <div class="wrap">
+    <div class="game"></div>
+    
+    <div class="modal-overlay">
+      <div class="modal">
+        <h2 class="winner">You Rock!</h2>
+        <button class="restart">Play Again?</button>
+        <p class="message">Developed by <a href="https://instagram.com/mayank.ew">Mayank Kumar</a></p>
+        <p class="share-text">Share it?</p>
+        <ul class="social">
+          <li><a target="_blank" class="twitter" href="https://twitter.com/share?url=https://instagram.com/mayank.ew"><span class="fa fa-twitter"></span></a></li>
+          <li><a target="_blank" class="facebook" href="https://www.facebook.com/sharer.php?u=https://instagram.com/mayank.ew"><span class="fa fa-facebook"></span></a></li>
+          <li><a target="_blank" class="google" href="https://plus.google.com/share?url=https://instagram.com/mayank.ew"><span class="fa fa-google"></span></a></li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <p class="disclaimer">All logos are property of their respective owners, No Copyright infringement intended.</p>
+    </footer>
+  </div><!-- End Wrap -->
+  
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="../../assets/js/memory-game.js"></script>
+  <script>
+    // Timer script
+    let timerInterval;
+    let seconds = 0;
+    
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        seconds++;
+        document.getElementById('timer').innerText = formatTime(seconds);
+      }, 1000);
+    }
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // Start the timer when the game starts
+    $(document).ready(() => {
+      startTimer();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>8 Queens</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/css/queens.css">
+
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .timer {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    .game {
+      margin-top: 20px;
+    }
+    .message {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+  </style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class='container'>
+  <div class="timer" id="timer">Time: 0 seconds</div>
+  <div class='game'>
+    <table>
+      <caption>Eight queens problem</caption>
+      <caption>Place 8 queens on the board so that none is attacking any of the others</caption>
+      <tr>
+        <th></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>8</th>
+        <td class='square white' x='0' y='0'></td>
+        <td class='square black' x='0' y='1'></td>
+        <td class='square white' x='0' y='2'></td>
+        <td class='square black' x='0' y='3'></td>
+        <td class='square white' x='0' y='4'></td>
+        <td class='square black' x='0' y='5'></td>
+        <td class='square white' x='0' y='6'></td>
+        <td class='square black' x='0' y='7'></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>7</th>
+        <td class='square black' x='1' y='0'></td>
+        <td class='square white' x='1' y='1'></td>
+        <td class='square black' x='1' y='2'></td>
+        <td class='square white' x='1' y='3'></td>
+        <td class='square black' x='1' y='4'></td>
+        <td class='square white' x='1' y='5'></td>
+        <td class='square black' x='1' y='6'></td>
+        <td class='square white' x='1' y='7'></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>6</th>
+        <td class='square white' x='2' y='0'></td>
+        <td class='square black' x='2' y='1'></td>
+        <td class='square white' x='2' y='2'></td>
+        <td class='square black' x='2' y='3'></td>
+        <td class='square white' x='2' y='4'></td>
+        <td class='square black' x='2' y='5'></td>
+        <td class='square white' x='2' y='6'></td>
+        <td class='square black' x='2' y='7'></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>5</th>
+        <td class='square black' x='3' y='0'></td>
+        <td class='square white' x='3' y='1'></td>
+        <td class='square black' x='3' y='2'></td>
+        <td class='square white' x='3' y='3'></td>
+        <td class='square black' x='3' y='4'></td>
+        <td class='square white' x='3' y='5'></td>
+        <td class='square black' x='3' y='6'></td>
+        <td class='square white' x='3' y='7'></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>4</th>
+        <td class='square white' x='4' y='0'></td>
+        <td class='square black' x='4' y='1'></td>
+        <td class='square white' x='4' y='2'></td>
+        <td class='square black' x='4' y='3'></td>
+        <td class='square white' x='4' y='4'></td>
+        <td class='square black' x='4' y='5'></td>
+        <td class='square white' x='4' y='6'></td>
+        <td class='square black' x='4' y='7'></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td class='square black' x='5' y='0'></td>
+        <td class='square white' x='5' y='1'></td>
+        <td class='square black' x='5' y='2'></td>
+        <td class='square white' x='5' y='3'></td>
+        <td class='square black' x='5' y='4'></td>
+        <td class='square white' x='5' y='5'></td>
+        <td class='square black' x='5' y='6'></td>
+        <td class='square white' x='5' y='7'></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td class='square white' x='6' y='0'></td>
+        <td class='square black' x='6' y='1'></td>
+        <td class='square white' x='6' y='2'></td>
+        <td class='square black' x='6' y='3'></td>
+        <td class='square white' x='6' y='4'></td>
+        <td class='square black' x='6' y='5'></td>
+        <td class='square white' x='6' y='6'></td>
+        <td class='square black' x='6' y='7'></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td class='square black' x='7' y='0'></td>
+        <td class='square white' x='7' y='1'></td>
+        <td class='square black' x='7' y='2'></td>
+        <td class='square white' x='7' y='3'></td>
+        <td class='square black' x='7' y='4'></td>
+        <td class='square white' x='7' y='5'></td>
+        <td class='square black' x='7' y='6'></td>
+        <td class='square white' x='7' y='7'></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>E</th>
+        <th>F</th>
+        <th>G</th>
+        <th>H</th>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="message" id="message">
+  <p>Congratulations! You solved the Eight Queens problem.</p>
+  <button onclick="resetGame()">Play Again</button>
+</div>
+  <script  src="../assets/js/queens.js"></script>
+  <script>
+    // Timer functionality
+    let timerElement = document.getElementById('timer');
+    let startTime = Date.now();
+  
+    function updateTimer() {
+      let currentTime = Date.now();
+      let elapsedTime = Math.floor((currentTime - startTime) / 1000); // in seconds
+      timerElement.textContent = `Time: ${elapsedTime} seconds`;
+    }
+  
+    setInterval(updateTimer, 1000); // Update timer every second
+  
+    // Reset game function
+    function resetGame() {
+      // Implement your reset logic here
+      alert('Resetting the game...');
+      // Example: Reload the page
+      location.reload();
+    }
+  </script>
+
+</body>
+</html>
