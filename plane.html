@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Sky</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+        }
+
+        .cloud {
+            position: absolute;
+            background-image: url('../assets/images/cloud.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            animation: moveCloud linear infinite;
+        }
+
+        @keyframes moveCloud {
+            from { transform: translateX(100vw); }
+            to { transform: translateX(-100%); }
+        }
+
+        .plane {
+            position: absolute;
+            width: 150px;
+            height: 72px;
+            background-image: url('../assets/images/plane.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: flyPlane 10s linear infinite;
+        }
+
+        @keyframes flyPlane {
+            0% { left: -120px; top: 20%; }
+            25% { left: 25vw; top: 40%; }
+            50% { left: 50vw; top: 60%; }
+            75% { left: 75vw; top: 30%; }
+            100% { left: 100vw; top: 50%; }
+        }
+
+
+        .greeting {
+            position: absolute;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            margin-left: 50px;
+            margin-top: -40px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            animation: textFollow 10s linear infinite;
+        }
+
+        @keyframes textFollow {
+            0% { left: -200px; top: calc(20% + 100px); }
+            25% { left: calc(25vw - 80px); top: calc(40% + 100px); }
+            50% { left: calc(50vw - 80px); top: calc(60% + 100px); }
+            75% { left: calc(75vw - 80px); top: calc(30% + 100px); }
+            100% { left: calc(100vw - 80px); top: calc(50% + 100px); }
+        }
+
+        .sun {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #FFD700, #FFA500);
+            border-radius: 50%;
+            top: 50px;
+            left: 50px;
+            box-shadow: 0 0 20px #FFD700;
+            animation: sunPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes sunPulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="sun"></div>
+    <div class="plane"></div>
+    <div class="rope"></div>
+    <div class="greeting">Hi Little Princess 👸</div>
+
+    <script>
+        function createCloud() {
+            const cloud = document.createElement('div');
+            cloud.classList.add('cloud');
+            const size = 150 + Math.random() * 100;
+            cloud.style.width = `${size}px`;
+            cloud.style.height = `${size * 0.6}px`;
+            cloud.style.top = `${Math.random() * 70}%`;
+            cloud.style.animationDuration = `${2 + Math.random() * 1}s`;
+            cloud.style.zIndex = Math.floor(Math.random() * 10);
+            document.body.appendChild(cloud);
+
+            cloud.addEventListener('animationiteration', () => {
+                cloud.style.top = `${Math.random() * 70}%`;
+            });
+        }
+
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createCloud, i * 500);
+        }
+
+    
+
+    </script>
+</body>
+</html>
