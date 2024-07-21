@@ -87,8 +87,8 @@ const story = {
         text: "The fairy waves her wand, and three glowing orbs appear. 'Choose the one with true magic inside!' she chirps.",
         image: "images/fairy-game.jpg",
         choices: [
-            { text: "Choose the red orb", next: () => fairyGameResult('red') },
-            { text: "Choose the blue orb", next: () => fairyGameResult('blue') }
+            { text: "Choose the red orb", next: () => fairyGameResult('red'), disabled: true},
+            { text: "Choose the blue orb", next: () => fairyGameResult('blue'), disabled: true}
         ]
     },
     fairySecrets: {
