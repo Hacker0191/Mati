@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial, sans-serif';
+    background-color: #1a1a2e;
+    color: #fff;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+#image-container {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#story-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#story-content {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#choices button {
+    background: linear-gradient(45deg, #ff9900, #ff6600);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    font-size: 1em;
+}
+
+#choices button:hover {
+    background: linear-gradient(45deg, #ffb347, #ff8c00);
+    transform: scale(1.05);
+}
+
+@media (orientation: landscape) {
+    #game-container {
+        flex-direction: row;
+    }
+
+    #image-container {
+        width: 70%;
+    }
+
+    #story-container {
+        width: 30%;
+        overflow-y: auto;
+    }
+}
